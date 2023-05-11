@@ -1,0 +1,21 @@
+.navbar_font{
+    font-family: url(Futura\ Heavy\ Italic\ font.ttf);
+    font-weight: 700;
+
+}
+html, body {
+    height: 100%; 
+    width: 100%; 
+    margin: auto;  
+}
+
+.loginform, .navbar_allign{
+    height: 100%; 
+    width: 100%; 
+    margin: auto;   
+}
+
+.ssgy{
+    font-family: url(Futura\ Heavy\ Italic\ font.ttf);
+    font-weight: 800;
+}

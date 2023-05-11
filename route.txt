@@ -1,0 +1,98 @@
+index.html - login form
+sorok.html - táblázat sörök
+edit.html - sör szerkesztés
+sorgyarak.html - táblázat gyárak
+edit_fact.html - sörgyár szerkesztés
+
+
+Routing
+
+renderMW
+
+middlewares/auth/
+    handleWrongPassMW.js
+    checkUserLoginMW.js
+    authMW.js
+    getUserByEmailMW.js
+    sendPwMW.js
+    regUserMW.js
+
+middlewares/sor/
+    getSorMW.js
+    getSorokMW.js
+    saveSorMW.js
+    delSorMW.js
+
+middlewares/gyar/
+    getSorGyarMW.js
+    getSorGyarakMW.js
+    saveSorGyarMW.js
+    delSorGyarMW.js
+
+GET, POST /                                                                               - index.html
+    handleWrongPassMW (get param)
+    renderMW (index.html)
+
+GET, POST /login                                                                    - pass ellenőrzés -> index
+    getUserByEmailMW
+    checkUserLoginMW (ellenőrzés)
+    renderMW (login.html - elfelejtett jelszo)
+
+GET, POST /sendmepw                                                                 - pass ellenőrzés -> index
+    getUserByEmailMW
+    sendPwMW
+    renderMW (login.html - elfelejtett jelszo)
+
+GET, POST /reg
+    regUserMW
+    renderMW
+
+GET /sorok                                                                          - sorok.html
+    authMW (be van jelentkezve?)
+    getSorokMW
+    renderMW (sorok.html)
+
+GET, POST /sorok/new                                                                - edit.html (new)
+    authMW
+    saveSorMW
+        if(typeof req.body.name === 'undefined'){
+            return next();
+        }
+
+        res.redirect('/sorok');
+        res.locals
+        next();
+    renderMW(edit.html) - ha volt valami -> feltölti
+
+GET. POST /sorok/edit/:sorID                                                        - edit.html (edit)
+    authMW
+    getSorMW
+    renderMW(edit.html) - ha volt valami -> feltölti
+
+
+GET /sorok/delete/:sorID
+    authMW
+    getSorMW
+    delSorMW
+        res.locals.sor.delete();
+        res.redirect('/sorok');
+
+
+GET /sorgyarak/:sorID                                                               - sorgyarak.html
+    authMW
+    getSorMW
+    getSorGyarakMW
+
+GET, POST /sorgyarak/:sorID/gyarID                                                  - edit_fact.html
+    authMW
+    getSorMW
+    getSorGyarMW
+    saveSorGyarMW
+    renderMW (sorgyarak.html)
+
+GET /sorgyarak/:sorID/gyarID/delete 
+    authMW
+    getSorgyarMW
+    delSorGyarMW
+        res.locals.sorgyar.delete();
+        res.redirect('/sorokgyarak');

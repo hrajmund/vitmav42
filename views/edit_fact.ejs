@@ -1,0 +1,39 @@
+<%- include ('header') -%>
+        <script src="functions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <div class="container" style="height: 40%"></div>
+    <div class="row">
+        <div class="col-6 col-md-5"></div>
+        <div class="col-6 col-md-2">
+        <form class="container-md" action="sorgyarak.html" name="login_form">
+            <div class="mb-3">
+                <label for="Input">Sörgyár</label>
+                <input name="nameInput" type="text" class="form-control" id="login_email">
+            </div>
+            <div class="mb-3">
+                <label for="Input">Kocsma partnerek</label>
+                <input name="facInput" type="text" class="form-control" id="login_email">
+            </div>
+            <div class="mb-3">
+                <label for="passInput">Készlet</label>
+                <input name="amountInput" type="text" class="form-control" id="login_password" >
+            </div>
+            <div class="mb-3">
+                <label for="passInput">Szállítók</label>
+                <input name="amountInput" type="text" class="form-control" id="login_password" >
+            </div>
+            <div class="mb-3">
+                <label for="passInput">Sörök</label>
+                <input name="amountInput" type="text" class="form-control" id="login_password" >
+            </div>
+            <a href="/sorgyarak">
+                <button type="button" style="background-color: #A98743; border: none; float: right;" class="btn btn-primary btn-sm">Mentés</button>
+            </a>
+            <div style="height: 17%;"></div>
+            <button type="button" class="btnlog" style="background-color: #B5BEC6; border: none;" class="btn btn-primary btn-sm">Mégse</button>
+            <input type="submit" class="btnlog" hidden />
+        </form>
+        </div>
+        <div class="col-6 col-md-3"></div>
+    </div>    
+    <%- include ('footer') -%>
